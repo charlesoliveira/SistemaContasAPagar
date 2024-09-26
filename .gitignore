@@ -10,10 +10,6 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-#IntelliJ dirs
-.idea/
-.idea
-
 # Package Files #
 *.jar
 *.war
@@ -26,3 +22,20 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+### Maven ###
+target/
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+#IntelliJ dirs
+.idea/
+.idea
+/target/
+!.mvn/wrapper/maven-wrapper.jar

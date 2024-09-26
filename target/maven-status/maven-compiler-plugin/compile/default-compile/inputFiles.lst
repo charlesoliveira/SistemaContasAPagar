@@ -1,1 +1,9 @@
 /home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/ContasAPagarApplication.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/configuration/CorsConfiguration.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/controller/ContaController.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/domain/entities/Conta.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/domain/interfaces/IContaDataProvider.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/domain/usecases/ListarContasUseCase.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/domain/usecases/conta/ListarContasOutput.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/domain/usecases/conta/converter/ListarContasOutputConverter.java
+/home/charlesd/Documentos/Workspaces/SistemaContasAPagar/src/main/java/com/example/contasapagar/factory/ListarContasUseCaseFactory.java

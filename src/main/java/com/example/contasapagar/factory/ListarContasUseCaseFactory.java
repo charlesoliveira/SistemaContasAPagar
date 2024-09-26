@@ -10,7 +10,7 @@ import org.springframework.context.annotation.DependsOn;
 public class ListarContasUseCaseFactory {
 
     @Bean
-    @DependsOn("criarListarContasOutputConveter")
+    @DependsOn("criarListarContasOutputConverter")
     public ListarContasUseCase criarListarContasUseCase(ListarContasOutputConverter outputConverter) {
         return ListarContasUseCase.builder().build();
     }
