@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-@EntityScan("com.example.contasapagar")
+@SpringBootApplication(scanBasePackages="com.example.contasapagar")
+@EntityScan(basePackages = "com.example.contasapagar")
 @EnableJpaRepositories(basePackages="com.example.contasapagar")
 public class ContasAPagarApplication {
 
