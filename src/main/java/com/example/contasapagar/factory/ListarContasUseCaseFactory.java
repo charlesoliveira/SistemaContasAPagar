@@ -1,5 +1,6 @@
 package com.example.contasapagar.factory;
 
+import com.example.contasapagar.domain.usecases.ListarContasPorIdUseCase;
 import com.example.contasapagar.domain.usecases.ListarContasUseCase;
 import com.example.contasapagar.domain.usecases.conta.converter.ListarContasOutputConverter;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,12 @@ public class ListarContasUseCaseFactory {
     @DependsOn("criarListarContasOutputConverter")
     public ListarContasUseCase criarListarContasUseCase(ListarContasOutputConverter outputConverter) {
         return ListarContasUseCase.builder().build();
+    }
+
+    @Bean
+    @DependsOn("criarListarContasOutputConverter")
+    public ListarContasPorIdUseCase criarListarContasPorIdUseCase(ListarContasOutputConverter outputConverter) {
+        return ListarContasPorIdUseCase.builder().build();
     }
 
     @Bean

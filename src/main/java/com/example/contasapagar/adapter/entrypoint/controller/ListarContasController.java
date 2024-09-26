@@ -1,4 +1,4 @@
-package com.example.contasapagar.controller;
+package com.example.contasapagar.adapter.entrypoint.controller;
 
 import com.example.contasapagar.domain.usecases.ListarContasUseCase;
 import com.example.contasapagar.domain.usecases.conta.ListarContasOutput;
@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/contas")
-public class ContaController {
+public class ListarContasController {
 
     @Autowired
     private final ListarContasUseCase listarContasUseCase;
