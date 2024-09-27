@@ -1,4 +1,4 @@
-package com.example.contasapagar.application.factory.usecase;
+package com.example.contasapagar.factory;
 
 import com.example.contasapagar.domain.usecases.inserirConta.InserirContaUseCase;
 import com.example.contasapagar.domain.usecases.inserirConta.converter.InserirContaUseCaseConverter;

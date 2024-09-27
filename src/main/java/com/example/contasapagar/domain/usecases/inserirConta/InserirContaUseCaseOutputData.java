@@ -1,5 +1,6 @@
 package com.example.contasapagar.domain.usecases.inserirConta;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,9 +28,11 @@ public class InserirContaUseCaseOutputData {
     private Long id;
 
     @Column(name = "dataVencimento")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date data_vencimento;
 
     @Column(name = "dataPagamento")
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private Date data_pagamento;
 
     @Column(name = "valor")

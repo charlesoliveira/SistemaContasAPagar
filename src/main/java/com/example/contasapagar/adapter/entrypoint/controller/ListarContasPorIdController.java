@@ -1,7 +1,7 @@
 package com.example.contasapagar.adapter.entrypoint.controller;
 
-import com.example.contasapagar.domain.usecases.ListarContasPorIdUseCase;
-import com.example.contasapagar.domain.usecases.listarConta.ListarContasOutput;
+import com.example.contasapagar.domain.usecases.listarContaPorId.ListarContasPorIdUseCase;
+import com.example.contasapagar.domain.usecases.listarConta.ListarContasOutputData;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,16 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/contas/{id}")
-public class ListarContasControllerPorId {
+public class ListarContasPorIdController {
 
     @Autowired
     private final ListarContasPorIdUseCase listarContasPorIdUseCase;
 
     @GetMapping
-    public ResponseEntity<List<ListarContasOutput>> listarContas(
+    public ResponseEntity<List<ListarContasOutputData>> listarContas(
             @PathVariable(value = "id", required = false) Long id
     ) {
-        List<ListarContasOutput> output = listarContasPorIdUseCase.executar(id);
+        List<ListarContasOutputData> output = listarContasPorIdUseCase.executar(id);
         return new ResponseEntity<>(output, HttpStatus.OK);
     }
 }

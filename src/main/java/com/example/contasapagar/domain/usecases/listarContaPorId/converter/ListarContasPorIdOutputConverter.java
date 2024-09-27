@@ -1,4 +1,4 @@
-package com.example.contasapagar.domain.usecases.listarConta.converter;
+package com.example.contasapagar.domain.usecases.listarContaPorId.converter;
 
 import com.example.contasapagar.domain.entities.Conta;
 import com.example.contasapagar.domain.usecases.listarConta.ListarContasOutputData;
@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Builder
-public class ListarContasOutputConverter {
-    public Page<ListarContasOutputData> converter (List<Conta> listagem, PageRequest pageRequest) {
+public class ListarContasPorIdOutputConverter {
+    public List<ListarContasOutputData> converter (List<Conta> listagem) {
         List<ListarContasOutputData> output = listagem.stream().map(item -> ListarContasOutputData.builder()
                 .id(item.getId())
                 .data_vencimento(item.getDataVencimento().toString())
@@ -21,7 +21,7 @@ public class ListarContasOutputConverter {
                 .valor(item.getValor().toString())
                 .situacao(item.getSituacao())
                 .build()).collect(Collectors.toList());
-        return new PageImpl<>(output, pageRequest, listagem.size());
+        return output;
     }
 
 }
