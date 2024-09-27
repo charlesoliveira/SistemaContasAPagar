@@ -1,7 +1,7 @@
 package com.example.contasapagar.adapter.entrypoint.controller;
 
 import com.example.contasapagar.domain.usecases.ListarContasPorIdUseCase;
-import com.example.contasapagar.domain.usecases.conta.ListarContasOutput;
+import com.example.contasapagar.domain.usecases.listarConta.ListarContasOutput;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

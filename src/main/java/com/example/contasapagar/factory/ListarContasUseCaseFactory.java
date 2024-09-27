@@ -2,7 +2,7 @@ package com.example.contasapagar.factory;
 
 import com.example.contasapagar.domain.usecases.ListarContasPorIdUseCase;
 import com.example.contasapagar.domain.usecases.ListarContasUseCase;
-import com.example.contasapagar.domain.usecases.conta.converter.ListarContasOutputConverter;
+import com.example.contasapagar.domain.usecases.listarConta.converter.ListarContasOutputConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;

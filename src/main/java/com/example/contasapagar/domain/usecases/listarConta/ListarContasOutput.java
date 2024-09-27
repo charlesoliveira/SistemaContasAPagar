@@ -1,4 +1,4 @@
-package com.example.contasapagar.domain.usecases.conta;
+package com.example.contasapagar.domain.usecases.listarConta;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

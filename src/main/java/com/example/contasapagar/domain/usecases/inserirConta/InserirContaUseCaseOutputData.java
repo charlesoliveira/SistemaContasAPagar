@@ -1,5 +1,6 @@
-package com.example.contasapagar.domain.entities;
+package com.example.contasapagar.domain.usecases.inserirConta;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,31 +11,33 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.Date;
 
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "TB_CONTA")
-public class Conta implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class InserirContaUseCaseOutputData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
 
-    private Date dataVencimento;
+    @Column(name = "dataVencimento")
+    private Date data_vencimento;
 
-    private Date dataPagamento;
+    @Column(name = "dataPagamento")
+    private Date data_pagamento;
 
+    @Column(name = "valor")
     private Float valor;
 
+    @Column(name = "descricao")
     private String descricao;
 
+    @Column(name = "situacao")
     private String situacao;
-
 }
