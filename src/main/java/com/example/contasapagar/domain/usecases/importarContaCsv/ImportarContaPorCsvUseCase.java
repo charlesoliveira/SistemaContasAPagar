@@ -1,11 +1,10 @@
 package com.example.contasapagar.domain.usecases.importarContaCsv;
 
 import com.example.contasapagar.domain.interfaces.IContaDataProvider;
-import com.example.contasapagar.domain.usecases.inserirConta.InserirContaUseCaseInputData;
+import com.example.contasapagar.domain.usecases.importarContaCsv.converter.ImportarContasUseCaseConverter;
 import com.example.contasapagar.domain.usecases.inserirConta.exceptions.InserirContaUseCaseException;
 import io.micrometer.common.util.StringUtils;
 import lombok.Builder;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,10 +14,14 @@ public class ImportarContaPorCsvUseCase {
     private IContaDataProvider contaDataProvider;
 
     public ImportarContaUseCaseOutPutData executar(List<ImportarContaUseCaseInPutData> inputData) {
+        inputData.stream().forEach(item -> {
+            validarCamposObrigatorios(item);
+        });
         salvarContas(inputData);
+        return null;
     }
 
-    private void validarCamposObrigatorios(InserirContaUseCaseInputData inputData) {
+    private void validarCamposObrigatorios(ImportarContaUseCaseInPutData inputData) {
         if (StringUtils.isEmpty(inputData.getData_pagamento().toString())) {
             throw new InserirContaUseCaseException("Não foi informado o campo data_pagamento.");
         }
@@ -37,6 +40,6 @@ public class ImportarContaPorCsvUseCase {
     }
 
     private void salvarContas(List<ImportarContaUseCaseInPutData> inputDataList) {
-        contaDataProvider.saveAll(inputDataList);
+        contaDataProvider.saveAll(ImportarContasUseCaseConverter.to(inputDataList));
     }
 }

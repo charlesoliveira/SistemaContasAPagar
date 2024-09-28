@@ -1,6 +1,7 @@
 package com.example.contasapagar.commons.utils;
 
 import com.example.contasapagar.domain.entities.Conta;
+import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContaUseCaseInPutData;
 import com.example.contasapagar.domain.usecases.inserirConta.exceptions.InserirContaUseCaseException;
 import io.micrometer.common.util.StringUtils;
 import org.apache.commons.csv.CSVFormat;
@@ -31,46 +32,27 @@ public class CsvUtility {
         }
     }
 
-    public static List<Conta> converterCSV(InputStream is) {
+    public static List<ImportarContaUseCaseInPutData> converterCSV(InputStream is) {
         try (BufferedReader bReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
              CSVParser csvParser = new CSVParser(bReader,
                      CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
-            List<Conta> contasList = new ArrayList<Conta>();
+            List<ImportarContaUseCaseInPutData> importList = new ArrayList<ImportarContaUseCaseInPutData>();
             csvParser.getRecords().forEach(record -> {
-                Conta conta = new Conta();
+                ImportarContaUseCaseInPutData importData = new ImportarContaUseCaseInPutData();
                 try {
-                    conta.setDataVencimento(converteDataDDMMYYYY(record.get("data_vencimento")));
-                    conta.setDataPagamento(converteDataDDMMYYYY(record.get("data_pagamento")));
-                    conta.setValor(Float.parseFloat(record.get("valor")));
-                    conta.setDescricao(record.get("descricao"));
-                    conta.setSituacao(record.get("situracao"));
+                    importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_vencimento")));
+                    importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_pagamento")));
+                    importData.setValor(Float.parseFloat(record.get("valor")));
+                    importData.setDescricao(record.get("descricao"));
+                    importData.setSituacao(record.get("situracao"));
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }
-                validaCsv(conta);
-                contasList.add(conta);
+                importList.add(importData);
             });
-            return contasList;
+            return importList;
         } catch (IOException e) {
             throw new RuntimeException("CSV data is failed to parse: " + e.getMessage());
-        }
-    }
-
-    private static void validaCsv(Conta conta) {
-        if (StringUtils.isEmpty(conta.getDataPagamento().toString())) {
-            throw new InserirContaUseCaseException("Não foi informado o campo data_pagamento.");
-        }
-        if (StringUtils.isEmpty(conta.getDataVencimento().toString())) {
-            throw new InserirContaUseCaseException("Não foi informado o campo data_vencimento.");
-        }
-        if (StringUtils.isEmpty(conta.getValor().toString())) {
-            throw new InserirContaUseCaseException("Não foi informado o campo valor.");
-        }
-        if (StringUtils.isEmpty(conta.getDescricao())) {
-            throw new InserirContaUseCaseException("Não foi informado o campo descricao.");
-        }
-        if (StringUtils.isEmpty(conta.getSituacao())) {
-            throw new InserirContaUseCaseException("Não foi informado o campo situacao.");
         }
     }
 
