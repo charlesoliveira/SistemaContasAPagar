@@ -1,8 +1,7 @@
 package com.example.contasapagar.domain.usecases.importarContaCsv.converter;
 
 import com.example.contasapagar.domain.entities.Conta;
-import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContaUseCaseInPutData;
-import com.example.contasapagar.domain.usecases.inserirConta.InserirContaUseCaseInputData;
+import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContasUseCaseInPutData;
 import lombok.Data;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.stream.Collectors;
 @Data
 public class ImportarContasUseCaseConverter {
 
-    public static List<Conta> to(List<ImportarContaUseCaseInPutData> inputList) {
+    public static List<Conta> to(List<ImportarContasUseCaseInPutData> inputList) {
         return inputList.stream().map( item -> {
             Conta conta = new Conta();
                 conta.setDataPagamento(item.getData_pagamento());

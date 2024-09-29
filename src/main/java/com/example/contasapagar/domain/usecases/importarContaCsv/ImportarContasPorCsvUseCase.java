@@ -9,11 +9,12 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public class ImportarContaPorCsvUseCase {
+public class ImportarContasPorCsvUseCase {
 
     private IContaDataProvider contaDataProvider;
+    private ImportarContasUseCaseConverter importarContasUseCaseConverter;
 
-    public ImportarContaUseCaseOutPutData executar(List<ImportarContaUseCaseInPutData> inputData) {
+    public ImportarContasUseCaseOutPutData executar(List<ImportarContasUseCaseInPutData> inputData) {
         inputData.stream().forEach(item -> {
             validarCamposObrigatorios(item);
         });
@@ -21,7 +22,7 @@ public class ImportarContaPorCsvUseCase {
         return null;
     }
 
-    private void validarCamposObrigatorios(ImportarContaUseCaseInPutData inputData) {
+    private void validarCamposObrigatorios(ImportarContasUseCaseInPutData inputData) {
         if (StringUtils.isEmpty(inputData.getData_pagamento().toString())) {
             throw new InserirContaUseCaseException("Não foi informado o campo data_pagamento.");
         }
@@ -39,7 +40,7 @@ public class ImportarContaPorCsvUseCase {
         }
     }
 
-    private void salvarContas(List<ImportarContaUseCaseInPutData> inputDataList) {
-        contaDataProvider.saveAll(ImportarContasUseCaseConverter.to(inputDataList));
+    private void salvarContas(List<ImportarContasUseCaseInPutData> inputDataList) {
+        contaDataProvider.saveAll(importarContasUseCaseConverter.to(inputDataList));
     }
 }

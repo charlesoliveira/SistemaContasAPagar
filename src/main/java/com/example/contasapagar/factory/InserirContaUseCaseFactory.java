@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class InserirContaUseCaseFactory {
 
     @Bean
-    public InserirContaUseCase createInserirContaUseCase() {
+    public InserirContaUseCase criarInserirContaUseCase() {
         return InserirContaUseCase.builder()
                 .inserirContaUseCaseConverter(new InserirContaUseCaseConverter())
                 .build();

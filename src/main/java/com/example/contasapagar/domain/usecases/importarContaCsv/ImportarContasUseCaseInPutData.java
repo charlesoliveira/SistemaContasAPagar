@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ImportarContaUseCaseInPutData {
+public class ImportarContasUseCaseInPutData {
 
     private Long id;
 

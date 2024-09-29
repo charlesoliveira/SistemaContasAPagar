@@ -1,12 +1,8 @@
 package com.example.contasapagar.commons.utils;
 
-import com.example.contasapagar.domain.entities.Conta;
-import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContaUseCaseInPutData;
-import com.example.contasapagar.domain.usecases.inserirConta.exceptions.InserirContaUseCaseException;
-import io.micrometer.common.util.StringUtils;
+import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContasUseCaseInPutData;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -32,13 +28,13 @@ public class CsvUtility {
         }
     }
 
-    public static List<ImportarContaUseCaseInPutData> converterCSV(InputStream is) {
+    public static List<ImportarContasUseCaseInPutData> converterCSV(InputStream is) {
         try (BufferedReader bReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
              CSVParser csvParser = new CSVParser(bReader,
                      CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
-            List<ImportarContaUseCaseInPutData> importList = new ArrayList<ImportarContaUseCaseInPutData>();
+            List<ImportarContasUseCaseInPutData> importList = new ArrayList<ImportarContasUseCaseInPutData>();
             csvParser.getRecords().forEach(record -> {
-                ImportarContaUseCaseInPutData importData = new ImportarContaUseCaseInPutData();
+                ImportarContasUseCaseInPutData importData = new ImportarContasUseCaseInPutData();
                 try {
                     importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_vencimento")));
                     importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_pagamento")));

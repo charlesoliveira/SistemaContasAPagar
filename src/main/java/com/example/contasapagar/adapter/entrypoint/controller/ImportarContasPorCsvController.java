@@ -1,7 +1,7 @@
 package com.example.contasapagar.adapter.entrypoint.controller;
 
 import com.example.contasapagar.commons.utils.CsvUtility;
-import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContaPorCsvUseCase;
+import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContasPorCsvUseCase;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ import java.io.IOException;
 public class ImportarContasPorCsvController {
 
     @Autowired
-    private ImportarContaPorCsvUseCase importarContaPorCsvUseCase;
+    private ImportarContasPorCsvUseCase importarContasPorCsvUseCase;
 
     @Transactional
     @PostMapping
@@ -29,7 +29,7 @@ public class ImportarContasPorCsvController {
             @RequestParam("file") MultipartFile file
     ) throws IOException {
         if (CsvUtility.hasCSVFormat(file)) {
-            importarContaPorCsvUseCase.executar(CsvUtility.converterCSV(file.getInputStream()));
+            importarContasPorCsvUseCase.executar(CsvUtility.converterCSV(file.getInputStream()));
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Please upload an csv file!");
     }
