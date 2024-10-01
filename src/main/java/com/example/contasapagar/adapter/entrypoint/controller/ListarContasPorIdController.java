@@ -23,7 +23,7 @@ public class ListarContasPorIdController {
 
     @GetMapping
     public ResponseEntity<List<ListarContasOutputData>> listarContas(
-            @PathVariable(value = "id", required = false) Long id
+            @PathVariable(value = "id", required = true) Long id
     ) {
         List<ListarContasOutputData> output = listarContasPorIdUseCase.executar(id);
         return new ResponseEntity<>(output, HttpStatus.OK);

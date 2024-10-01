@@ -1,5 +1,6 @@
 package com.example.contasapagar.commons.utils;
 
+import com.example.contasapagar.commons.enums.EnumSituacaoConta;
 import com.example.contasapagar.domain.usecases.importarContaCsv.ImportarContasUseCaseInPutData;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
@@ -36,11 +37,11 @@ public class CsvUtility {
             csvParser.getRecords().forEach(record -> {
                 ImportarContasUseCaseInPutData importData = new ImportarContasUseCaseInPutData();
                 try {
-                    importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_vencimento")));
+                    importData.setData_vencimento(converteDataDDMMYYYY(record.get("data_vencimento")));
                     importData.setData_pagamento(converteDataDDMMYYYY(record.get("data_pagamento")));
                     importData.setValor(Float.parseFloat(record.get("valor")));
                     importData.setDescricao(record.get("descricao"));
-                    importData.setSituacao(record.get("situracao"));
+                    importData.setSituacao(EnumSituacaoConta.getValueById(Integer.parseInt(record.get("situacao"))));
                 } catch (ParseException e) {
                     throw new RuntimeException(e);
                 }

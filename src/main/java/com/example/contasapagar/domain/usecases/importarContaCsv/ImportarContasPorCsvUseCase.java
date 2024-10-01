@@ -5,12 +5,14 @@ import com.example.contasapagar.domain.usecases.importarContaCsv.converter.Impor
 import com.example.contasapagar.domain.usecases.inserirConta.exceptions.InserirContaUseCaseException;
 import io.micrometer.common.util.StringUtils;
 import lombok.Builder;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Builder
 public class ImportarContasPorCsvUseCase {
 
+    @Autowired
     private IContaDataProvider contaDataProvider;
     private ImportarContasUseCaseConverter importarContasUseCaseConverter;
 

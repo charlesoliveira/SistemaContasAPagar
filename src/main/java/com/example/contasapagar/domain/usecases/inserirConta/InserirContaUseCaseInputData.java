@@ -1,5 +1,6 @@
 package com.example.contasapagar.domain.usecases.inserirConta;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,9 +12,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class InserirContaUseCaseInputData {
-
-    private Long id;
 
     private Date data_vencimento;
 
@@ -23,5 +23,5 @@ public class InserirContaUseCaseInputData {
 
     private String descricao;
 
-    private String situacao;
+    private int situacao;
 }

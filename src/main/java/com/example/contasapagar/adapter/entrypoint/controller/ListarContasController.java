@@ -31,7 +31,7 @@ public class ListarContasController {
             @RequestParam(value = "size", required = false) Integer size,
             @RequestParam(required = false) String sortBy
     ) {
-        if(null == page) page = 0;
+        if(null == page) page = 1;
         if(null == size) size = 10;
         if(StringUtils.isEmpty(sortBy)) sortBy ="id";
         return listarContasUseCase.executar(PageRequest.of(page, size, Sort.by(sortBy)));

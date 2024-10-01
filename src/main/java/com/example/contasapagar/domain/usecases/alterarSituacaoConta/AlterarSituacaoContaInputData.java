@@ -1,6 +1,5 @@
-package com.example.contasapagar.domain.usecases.importarContaCsv;
+package com.example.contasapagar.domain.usecases.alterarSituacaoConta;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,8 +11,9 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class ImportarContasUseCaseInPutData {
+public class AlterarSituacaoContaInputData {
+
+    private Long id;
 
     private Date data_vencimento;
 
@@ -23,5 +23,5 @@ public class ImportarContasUseCaseInPutData {
 
     private String descricao;
 
-    private String situacao;
+    private int situacao;
 }
